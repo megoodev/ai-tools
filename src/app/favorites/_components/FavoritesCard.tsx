@@ -22,7 +22,7 @@ const FavoritesCard = () => {
   }
   useEffect(() => {
     _getFavorites()
-  }, [_getFavorites])
+  }, [])
 
 
   if (!user) {

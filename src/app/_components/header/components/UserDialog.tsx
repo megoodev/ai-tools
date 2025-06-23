@@ -33,7 +33,6 @@ const UserDialog = () => {
     const formaData = new FormData()
     formaData.append('image', e.target.files[0])
     formaData.append('userId', user.id)
-    console.log(formaData)
     uploadUserImage(formaData).then((res) => {
       localStorage.setItem('user', JSON.stringify(res.data.user))
       dispatch(addUser(res.data.user))

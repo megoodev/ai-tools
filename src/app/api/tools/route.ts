@@ -58,7 +58,6 @@ export async function POST(request: NextRequest) {
         categoryId,
       }
     })
-    console.log(tool)
     return NextResponse.json({ msg: 'success',tool }, { status: 201 })
 
 

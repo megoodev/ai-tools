@@ -15,8 +15,7 @@ import { XIcon } from "lucide-react"
 
 const DeleteTool = ({ id, setLength, length }: { id: string, setLength: Set<number> , length: number }) => {
   const _removeTool = ()=> {
-    reomveTool(id).then((res)=> {
-      console.log(res)
+    reomveTool(id).then(()=> {
       setLength(length - 1)
     })
   }

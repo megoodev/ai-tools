@@ -1,8 +1,8 @@
 import { prisma } from "@/utils/db"
 import { Props } from "@/utils/type"
 import { verify } from "jsonwebtoken"
-import { NextRequest, NextResponse } from "next/server"
-
+import {  NextResponse } from "next/server"
+import type { NextRequest } from 'next/server'
 export async function DELETE(request: NextRequest, { params }: Props) {
   try {
     const cookie = request.cookies.get('jwtToken')
@@ -36,6 +36,7 @@ export async function DELETE(request: NextRequest, { params }: Props) {
     return NextResponse.json({ error }, { status: 500 })
   }
 }
+
 export async function PUT(request: NextRequest, { params }: Props) {
   try {
     const cookie = request.cookies.get('jwtToken')

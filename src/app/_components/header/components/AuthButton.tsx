@@ -9,10 +9,11 @@ import { addUser } from '@/utils/rtk/userSlice';
 
 const AuthButton = () => {
   const despatch = useDispatch()
-  useEffect(() => {
-    despatch(addUser(userStorage))
-  }, [despatch])
   const user = useSelector(state => state?.user?.user[0])
+
+  useEffect(() => {
+    despatch(addUser(JSON.parse(localStorage.getItem('user'))))
+  }, [user])
   const router = useRouter()
   return (
     <div>

@@ -26,7 +26,6 @@ const SideBar = () => {
   useEffect(() => {
     
     if (user !== undefined) {
-      console.log(user?.isAdmin)
       if (!user.isAdmin) {
         router.push('/')
       }

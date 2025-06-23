@@ -5,7 +5,7 @@ const initialState: initialStateType = {
   user: [],
   loading: false,
   error: null
-} 
+}
 type initialStateType = {
   user: [],
   loading: boolean,
@@ -18,11 +18,11 @@ const userSlice = createSlice({
     addUser: (state, action) => {
       state.user.push(action.payload)
     },
-    deleteUser: (state)=> {
+    deleteUser: (state) => {
       state.user = []
     }
   }
 })
 
-export const {addUser,deleteUser} = userSlice.actions
+export const { addUser, deleteUser } = userSlice.actions
 export default userSlice.reducer

@@ -60,15 +60,15 @@ const CreateTools = () => {
       }>
         <div className="grid w-full mb-5 max-w-sm items-center gap-3">
           <Label className="!w-25" htmlFor="name">tool name</Label>
-          <Input onChange={(e) => setToolData({ ...toolData, name: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="text" id="name" placeholder="name" />
+          <Input autoComplete='off' onChange={(e) => setToolData({ ...toolData, name: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="text" id="name" placeholder="name" />
         </div>
         <div className="grid w-full mb-5 max-w-sm items-center gap-3">
           <Label htmlFor="discription">discription</Label>
-          <Input onChange={(e) => setToolData({ ...toolData, description: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="text" id="discription" placeholder="discription" />
+          <Input autoComplete='off' onChange={(e) => setToolData({ ...toolData, description: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="text" id="discription" placeholder="discription" />
         </div>
         <div className="grid w-full mb-5 max-w-sm items-center gap-3">
           <Label htmlFor="link">Link</Label>
-          <Input onChange={(e) => setToolData({ ...toolData, link: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="url" id="link" placeholder="link" />
+          <Input autoComplete='off' onChange={(e) => setToolData({ ...toolData, link: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="url" id="link" placeholder="link" />
         </div>
         <div className="grid w-full mb-5 max-w-sm items-center gap-3">
           <Label className={`${buttonVariants(Button)} cursor-pointer w-[55vw] md:w-[62vw]`} htmlFor="file">selet tool image</Label>

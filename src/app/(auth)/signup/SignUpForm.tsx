@@ -44,15 +44,15 @@ const SignUpForm = () => {
       <MainHeading title={'Sign Up'} />
       <div>
         <label className="font-semibold mb-5" htmlFor="username">username:</label>
-        <Input onChange={(e) => setUsername(e.target.value)} id='username' type="text" placeholder='username' />
+        <Input autoComplete='off' onChange={(e) => setUsername(e.target.value)} id='username' type="text" placeholder='username' />
       </div>
       <div>
         <label className="font-semibold mb-5" htmlFor="email">Email:</label>
-        <Input onChange={(e) => setEmail(e.target.value)} id='email' type="email" placeholder='Email' />
+        <Input autoComplete='off' onChange={(e) => setEmail(e.target.value)} id='email' type="email" placeholder='Email' />
       </div>
       <div>
         <label className="font-semibold" htmlFor="password">Password:</label>
-        <Input onChange={(e) => setPassword(e.target.value)} id='password' type="password" placeholder='Password' />
+        <Input autoComplete='off' onChange={(e) => setPassword(e.target.value)} id='password' type="password" placeholder='Password' />
       </div>
       <Button className="cursor-pointer" type='submit' >Submit</Button>
       <div>

@@ -51,11 +51,11 @@ const LoginForm = () => {
 
       <div>
         <label htmlFor="email">Email:</label>
-        <Input onChange={(e) => SetEmailAddress(e.target.value)} id='email' type="email" placeholder='Email' />
+        <Input autoComplete='off' onChange={(e) => SetEmailAddress(e.target.value)} id='email' type="email" placeholder='Email' />
       </div>
       <div>
         <label htmlFor="password">Password:</label>
-        <Input onChange={(e) => SetPassword(e.target.value)} id='password' type="password" placeholder='Password' />
+        <Input autoComplete='off' onChange={(e) => SetPassword(e.target.value)} id='password' type="password" placeholder='Password' />
       </div>
       <Button className='cursor-pointer' type='submit' >Submit</Button>
       <div>

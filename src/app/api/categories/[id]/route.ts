@@ -21,7 +21,6 @@ export async function PUT(
   context: RouteContext
 ) {
   try {
-    // Authentication check
     const cookie = request.cookies.get('jwtToken');
     if (!cookie?.value) {
       return NextResponse.json(
@@ -30,10 +29,8 @@ export async function PUT(
       );
     }
 
-    // Token verification with proper typing
     const decoded = verify(cookie.value, process.env.JWT_SECRET!);
 
-    // Type guard for JWT payload
     if (typeof decoded !== 'object' || decoded === null || !('isAdmin' in decoded)) {
       return NextResponse.json(
         { message: 'Invalid token structure' },
@@ -77,8 +74,69 @@ export async function PUT(
 
     return NextResponse.json(
       {
-        message: 'Category updated successfully',
+        msg: 'the category has been modified successfuly',
         data: updatedCategory
+      },
+      { status: 200 }
+    );
+
+  } catch (error) {
+    console.error('Error in category update:', error);
+    return NextResponse.json(
+      { message: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
+export async function DELETE(
+  request: NextRequest,
+  context: RouteContext
+) {
+  try {
+    const cookie = request.cookies.get('jwtToken');
+    if (!cookie?.value) {
+      return NextResponse.json(
+        { message: 'Authentication token missing' },
+        { status: 401 }
+      );
+    }
+
+    const decoded = verify(cookie.value, process.env.JWT_SECRET!);
+
+    if (typeof decoded !== 'object' || decoded === null || !('isAdmin' in decoded)) {
+      return NextResponse.json(
+        { message: 'Invalid token structure' },
+        { status: 401 }
+      );
+    }
+
+    const userCookie = decoded as JwtPayload;
+    if (!userCookie.isAdmin) {
+      return NextResponse.json(
+        { message: 'Not authorized' },
+        { status: 403 }
+      );
+    }
+
+    // Database operations
+    const categoryExists = await prisma.category.findUnique({
+      where: { id: context.params.id }
+    });
+
+    if (!categoryExists) {
+      return NextResponse.json(
+        { message: 'Category not found' },
+        { status: 404 }
+      );
+    }
+
+    await prisma.category.delete({
+      where: { id: context.params.id },
+    });
+
+    return NextResponse.json(
+      {
+        msg: 'the category has been successfuly cleared',
       },
       { status: 200 }
     );

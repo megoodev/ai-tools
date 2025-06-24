@@ -5,6 +5,7 @@ import Header from "./_components/header/Header";
 import ArrowHeader from "@/components/ArrowHeader";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ReduxProvider } from "@/utils/rtk/Provide";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,11 @@ export default function RootLayout({
             {children}
             <ArrowHeader />
           </ThemeProvider>
+
+        <div className="fixed">
+            <Toaster  position="top-center" expand={false}/>
+            
+        </div>
         </body>
       </ReduxProvider>
 

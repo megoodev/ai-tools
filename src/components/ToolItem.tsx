@@ -11,30 +11,36 @@ import {
 import Link from 'next/link'
 import Image from 'next/image'
 import DialogDemo from '../app/tools/_components/DialogDemo'
-import {  HeartMinus, HeartPlus } from 'lucide-react'
+import { HeartMinus, HeartPlus } from 'lucide-react'
 import { Button } from './ui/button'
 import { useSelector } from 'react-redux';
 import { addFavorites, deleteFavorites } from '@/lib/apiCashe/favorite'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { toast } from 'sonner'
 
 
 const ToolItem = ({ tool }: { tool: Tool }) => {
   const favorites = useSelector(state => state?.favorites?.favorites)
   const user = useSelector(state => state.user.user[0])
-  const [isFavorite , setIsVaforite] = useState(false)
+  const [isFavorite, setIsVaforite] = useState(false)
   const router = useRouter()
   const toggleFavorite = (id: string) => {
     if (favorites !== undefined) {
       if (favorites.length < 1) {
-        return addFavorites(tool.id)
+        toast.success('Saved to favorites')
+        return addFavorites(tool.id).then((res) => console.log(res.data))
       } else {
-        favorites.map((favorite: Tool) => {
+        favorites.forEach((favorite: Tool) => {
           if (id !== favorite.id) {
-            return addFavorites(tool.id)
+            addFavorites(tool.id)
+            return toast.success('Saved to favorites')
           }
           if (id === favorite.id) {
-            return deleteFavorites(tool.id)
+
+            deleteFavorites(tool.id)
+            return toast.success('Removed from favorites')
+
           }
 
         })
@@ -43,11 +49,11 @@ const ToolItem = ({ tool }: { tool: Tool }) => {
     }
 
   }
-  useEffect(()=> {
-    favorites.forEach((favorite:Tool)=> {
+  useEffect(() => {
+    favorites.forEach((favorite: Tool) => {
       favorite.id === tool.id && setIsVaforite(true)
     })
-  },[isFavorite])
+  }, [isFavorite])
   return (
     <Card>
       <CardHeader className='w-full h-50 relative'>
@@ -63,7 +69,7 @@ const ToolItem = ({ tool }: { tool: Tool }) => {
             onClick={() => user ? toggleFavorite(tool?.id) : router.push('/login')}
           >
 
-            {isFavorite? <HeartMinus/> : <HeartPlus />}
+            {isFavorite ? <HeartMinus /> : <HeartPlus />}
 
           </Button>
         </CardAction>

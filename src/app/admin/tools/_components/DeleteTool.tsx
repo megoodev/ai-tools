@@ -12,10 +12,12 @@ import {
 import { Button } from "@/components/ui/button"
 import { reomveTool } from "@/lib/apiCashe/tools"
 import { XIcon } from "lucide-react"
+import { toast } from "sonner"
 
 const DeleteTool = ({ id, setLength, length }: { id: string, setLength: Set<number> , length: number }) => {
   const _removeTool = ()=> {
-    reomveTool(id).then(()=> {
+    reomveTool(id).then((res)=> {
+      toast.success(res.data.msg)
       setLength(length - 1)
     })
   }

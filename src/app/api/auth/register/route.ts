@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
         userId: newUser.id
       }
     })
-    return NextResponse.json({ newUser })
+    return NextResponse.json({ msg: 'Account Created Successfly', newUser })
   } catch (error) {
     return NextResponse.json({ error })
   }

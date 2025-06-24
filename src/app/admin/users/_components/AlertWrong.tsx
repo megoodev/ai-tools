@@ -12,14 +12,16 @@ import { Button } from "@/components/ui/button"
 import { deleteUser } from "@/lib/apiCashe/users"
 
 import { XIcon } from "lucide-react"
+import { toast } from "sonner"
 
 const AlertWrong = ({ id, setDeleteItem }: { id: string, setDeleteItem: boolean }) => {
   const removeUser = (id: string) => {
-    deleteUser(id).then(()=> {
+    deleteUser(id).then((res)=> {
       setDeleteItem(false)
-
+      toast.success(res.data.msg)
+      
     }).catch((error) => {
-      console.error(error)
+      toast.error(error.data.msg)
     })
   }
   return (

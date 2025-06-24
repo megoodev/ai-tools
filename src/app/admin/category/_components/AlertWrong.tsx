@@ -12,14 +12,12 @@ import {
 import { Button } from "@/components/ui/button"
 import { deleteCategory } from "@/lib/apiCashe/categories"
 import { XIcon } from "lucide-react"
+import { toast } from "sonner"
 
 const AlertWrong = ({ id }: { id: string }) => {
 
   const removeCategory = (id: string) => {
-    deleteCategory(id).catch((error) => {
-      console.error(error)
-    })
-  }
+    deleteCategory(id).then((res)=> toast.success(res.data.msg)).catch((error) => toast.error(error.data.msg))}
   return (
     <AlertDialog>
       <AlertDialogTrigger>

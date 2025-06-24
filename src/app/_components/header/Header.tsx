@@ -1,4 +1,5 @@
 'use client'
+import { Toaster } from 'sonner';
 import Link from "next/link"
 import AuthButton from "./components/AuthButton"
 import Image from "next/image"

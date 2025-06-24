@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const link = formData.get('link');
     const categoryId = formData.get('categoryId');
     const description = formData.get('description');
-    console.log(!name )
+    console.log(!name)
     const cookie = request.cookies.get('jwtToken')
     if (!cookie) {
       return NextResponse.json({ msg: 'you are not token' }, { status: 401 })
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       )
     }
     if (!file) {
-      return NextResponse.json({ message: 'No file uploaded' }, { status: 400 });
+      return NextResponse.json({ msg: 'No file uploaded' }, { status: 400 });
     }
 
     const arraybuffer = await file.arrayBuffer()
@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
 
     if (!categoryExists) {
       return NextResponse.json(
-        { msg: 'التصنيف غير موجود' }, { status: 400 }
+        { msg: 'Category not found' }, { status: 400 }
       )
     }
     const tool = await prisma.tool.create({
@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
         categoryId,
       }
     })
-    return NextResponse.json({ msg: 'success',tool }, { status: 201 })
+    return NextResponse.json({ msg: 'The tool was Created Successfily', tool }, { status: 201 })
 
 
   } catch (error) {

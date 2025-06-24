@@ -8,6 +8,7 @@ import MainHeading from "@/components/MainHeading"
 import Link from "next/link"
 import axios from "axios"
 import { useSelector } from "react-redux"
+import { toast } from "sonner"
 
 
 const SignUpForm = () => {
@@ -31,7 +32,8 @@ const SignUpForm = () => {
       username,
       email,
       password
-    }).then(() => {
+    }).then((res) => {
+      toast.success(res.data.msg)
       router.push('login')
     }).catch((error) => {
       console.error(error)

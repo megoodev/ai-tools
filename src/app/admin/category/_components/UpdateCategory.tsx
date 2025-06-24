@@ -15,15 +15,15 @@ import { Label } from "@/components/ui/label"
 import { updateCategory } from "@/lib/apiCashe/categories"
 import { PenIcon } from "lucide-react"
 import { useState } from "react"
+import { toast } from "sonner"
 
 export function UpdateCategory({ id }: { id: string }) {
   const [name, setName] = useState('')
   const update = () => {
-    updateCategory(id, name).then(() => {
+    updateCategory(id, name).then((res) => {
+      toast.success(res.data.msg)
       setName('')
-    }).catch((error)=> {
-      console.error(error.error)
-    })
+    }).catch((error)=> toast.error(error.data.error))
   }
   return (
     <Dialog>

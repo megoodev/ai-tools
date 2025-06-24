@@ -8,6 +8,8 @@ import MainHeading from '@/components/MainHeading'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '@/utils/rtk/userSlice'
 import axios from 'axios'
+import { toast } from 'sonner';
+
 
 
 
@@ -24,23 +26,21 @@ const LoginForm = () => {
   }, [user, router])
   const handleAxiosLogin = async (e: FormEvent) => {
     e.preventDefault()
-    try {
       await axios.post('/api/auth/sign-in', {
         email: emailAddress,
         password: password
       }).then((res) => {
         if (res.data.error) {
+          toast.error(res.data.error)
           return console.error(res.data.error)
         }
+        toast.success('Welcome To Our Website')
         localStorage.setItem('user', JSON.stringify(res.data.user))
         dispatch(addUser(JSON.parse(localStorage.getItem('user'))))
         router.push('/')
       }).catch((error) => {
         console.error(error.data.error)
       })
-    } catch (error) {
-      console.error(error)
-    }
   }
   return (
     <form onSubmit={(e) => {

@@ -6,6 +6,7 @@ import AlertWrong from "./AlertWrong"
 import { Button } from "@/components/ui/button"
 import { UpdateCategory } from "./UpdateCategory"
 import { getCategories } from "@/lib/apiCashe/categories"
+import MainHeading from "@/components/MainHeading"
 
 
 const GetCategories = () => {
@@ -13,12 +14,13 @@ const GetCategories = () => {
 
   useEffect(() => {
     getCategories().then((res) => {
-      setCategories(res.data.categories)
+    setCategories(res.data.categories)
     })
-  }, [categories])
+  }, [])
 
   return (
     <section>
+      <MainHeading title="All categories"/>
       <ul>
         {categories.map((category: category) => (
           <li className="bg-secondary mb-5 p-3 list-decimal flex justify-between  rounded-sm" key={category.id}>

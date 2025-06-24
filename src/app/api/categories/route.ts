@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
     if (!userCookie.isAdmin) {
       return NextResponse.json({ msg: 'not authorized' }, { status: 401 })
     }
-    
+
     const { name } = (await request.json())
     if (!name) {
       return NextResponse.json({ msg: 'name param is missing' }, { status: 404 })
@@ -39,9 +39,9 @@ export async function POST(request: NextRequest) {
         tools: true
       }
     })
-    return NextResponse.json({ category },{ status: 201 })
+    return NextResponse.json({ msg: 'The category was created successfly', category }, { status: 201 })
 
   } catch (error) {
-    return NextResponse.json({error},{status: 500})
+    return NextResponse.json({ error }, { status: 500 })
   }
 }

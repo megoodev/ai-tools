@@ -11,23 +11,24 @@ import {
 import Link from 'next/link'
 import Image from 'next/image'
 import DialogDemo from '../app/tools/_components/DialogDemo'
-import { Heart, PenIcon } from 'lucide-react'
+import { BanIcon, Heart, HeartMinus, HeartPlus, PenIcon } from 'lucide-react'
 import { Button } from './ui/button'
 import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react'
 import { addFavorites, deleteFavorites } from '@/lib/apiCashe/favorite'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 
 const ToolItem = ({ tool }: { tool: Tool }) => {
-  const [state, setState] = useState()
   const favorites = useSelector(state => state?.favorites?.favorites)
+  const user = useSelector(state => state.user.user[0])
+  const [isFavorite , setIsVaforite] = useState(false)
+  const router = useRouter()
   const toggleFavorite = (id: string) => {
-
     if (favorites !== undefined) {
       if (favorites.length < 1) {
         return addFavorites(tool.id)
       } else {
-
         favorites.map((favorite: Tool) => {
           if (id !== favorite.id) {
             return addFavorites(tool.id)
@@ -42,16 +43,11 @@ const ToolItem = ({ tool }: { tool: Tool }) => {
     }
 
   }
-  useEffect(() => {
-    favorites.map((favorite: Tool) => {
-      if (tool.id !== favorite.id) {
-        setState(true)
-      } else {
-        setState(false)
-      }
-
+  useEffect(()=> {
+    favorites.map((favorite:Tool)=> {
+      favorite.id === tool.id && setIsVaforite(true)
     })
-  }, [favorites])
+  },[isFavorite])
   return (
     <Card>
       <CardHeader className='w-full h-50 relative'>
@@ -64,14 +60,13 @@ const ToolItem = ({ tool }: { tool: Tool }) => {
           <Link target='_blank' href={tool?.link}>visit</Link>
 
           <Button className=' rounded-full cursor-pointer' variant='secondary'
-            onClick={() => toggleFavorite(tool?.id)}
+            onClick={() => user ? toggleFavorite(tool?.id) : router.push('/login')}
           >
-            {!state ? < Heart /> : <PenIcon />}
+
+            {isFavorite? <HeartMinus/> : <HeartPlus />}
 
           </Button>
         </CardAction>
-
-
       </CardContent>
       <CardFooter className='flex flex-col'>
         <p className='line-clamp-3 mb-5'>{tool?.description}</p>

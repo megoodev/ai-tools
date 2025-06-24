@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const link = formData.get('link');
     const categoryId = formData.get('categoryId');
     const description = formData.get('description');
-
+    console.log(!name )
     const cookie = request.cookies.get('jwtToken')
     if (!cookie) {
       return NextResponse.json({ msg: 'you are not token' }, { status: 401 })

@@ -22,7 +22,7 @@ const ToolsCard = () => {
   useEffect(() => {
     getCategory_()
     _getFavorites()
-  }, [_getFavorites])
+  }, [])
   
   const getCategory_ = () => {
     getCategories().then((res) => setCategories(res.data.categories))

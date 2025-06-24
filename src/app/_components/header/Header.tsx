@@ -10,7 +10,6 @@ import { useSelector } from "react-redux"
 const Header = () => {
   const user = useSelector(state=> state?.user?.user[0])
   const [open, setOpen] = useState(false)
-  console.log(user)
   type Links = {
     path: string,
     name: string

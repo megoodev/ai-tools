@@ -23,14 +23,12 @@ const SideBar = () => {
   ]
   const user = useSelector(state => state?.user?.user[0])
   const router = useRouter()
+  
   useEffect(() => {
-    
-    if (user !== undefined) {
-      if (!user.isAdmin) {
+      if (user === undefined || user === null) {
         router.push('/')
       }
-    }
-  }, [user, router])
+  }, [user])
 
   return (
     <div className='w-[20%] h-[91vh] sticky left-0 top-16  '>

@@ -25,14 +25,14 @@ const GetUsers = () => {
       <ul className="w-[100%] mt-5">
         {users.map((user: usersWithRelation) => (
           userState.id === user.id ? '' : (
-            <li className="p-3 bg-secondary mb-5 rounded-sm w-[75vw] flex gap-2  items-center" key={user.id}>
+            <li className="p-3 bg-secondary mb-5 rounded-sm w-[70vw] flex gap-2  items-center flex-col md:flex-row " key={user.id}>
               <div className="">
                 <Image src={user.image?.url} width={80} height={80} className="rounded-full" alt="user-image" />
               </div>
-              <div className="w-full flex justify-between items-center" >
-                <div>
-                  <h1 className="font-semibold">username: {user?.username} </h1>
-                  <h1 className="font-semibold">emailAddress: {user?.email} </h1>
+              <div className="w-full flex justify-between items-center flex-col md:flex-row" >
+                <div className="mb-5">
+                  <h1 className="font-semibold"><span className="hidden md:inline mr-2">username:</span> {user?.username} </h1>
+                  <h1 className="font-semibold"><span className="hidden md:inline mr-2">email:</span>{user?.email} </h1>
                 </div>
                 <div className="flex justify-between gap-5 items-center">
                   <IsAdmin setAdmin={setAdmin}  id={user.id} isAdmin={user.isAdmin} />

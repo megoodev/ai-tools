@@ -25,7 +25,7 @@ const GetTools = () => {
     <div className="grid grid-cols-1 gap-3.5 w-full mt-5">
       <MainHeading title="All Tools" />
       {tools.map((tool: toolWithRelation) => (
-        <div key={tool?.id} className="p-5 bg-secondary rounded-sm w-[70vw] flex items-center justify-between">
+        <div key={tool?.id} className="p-5 bg-secondary rounded-sm w-[65vw] flex items-center justify-between">
           <div>
             <label className="w-50 ">{tool.name}</label>
           </div>

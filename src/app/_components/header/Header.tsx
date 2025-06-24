@@ -36,12 +36,12 @@ const Header = () => {
   ]
 
   return (
-    <header className="container py-2">
+    <header className="container py-2 z-50">
       <div className="flex justify-between gap-5">
         <Link href={'/'}>
           <Image src={logo} alt="AI-logo" /></Link>
 
-        <nav className={`  ${open ? 'absolute inset-0 ' : 'hidden'} md:static absolute bottom-0   bg-black/50 md:bg-transparent md:flex justify-center items-center pt-15 md:pt-0`}>
+        <nav className={`  ${open ? 'absolute inset-0 ' : 'hidden'} z-50 md:static absolute bottom-0   bg-black/50 md:bg-transparent md:flex justify-center items-center pt-15 md:pt-0`}>
           <div className="flex md:flex-row w-[90%] md:w-auto flex-col mx-auto pt-15 md:pt-3 py-8 md:py-3 px-5 gap-5 rounded-2xl md:rounded-full font-semibold justify-end  bg-accent relative">
             <XIcon className="cursor-pointer border-b-1 md:hidden absolute top-5 end-5  hover:text-red-500 hover:rotate-5 duration-300" onClick={() => setOpen(!open)} />
             {links.map((link, i) => (

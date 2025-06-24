@@ -13,8 +13,8 @@ const Admin = () => {
           <Image src={user?.image?.url} fill className="rounded-sm " alt='admin-image' />
         </div>
         <ul>
-          <li><label className="font-semibold text-2xl w-17 inline-block mr-3">Name:</label><span>{user?.username}</span> </li>
-          <li><label className="font-semibold text-2xl w-17 inline-block mr-3">Email:</label><span>{user?.email}</span> </li>
+          <li><label className="font-semibold text-2xl w-17 hidden sm:inline-block mr-3 ">Name:</label><span>{user?.username}</span> </li>
+          <li><label className="font-semibold text-2xl w-17 hidden sm:inline-block mr-3 ">Email:</label><span>{user?.email}</span> </li>
         </ul>
     </div>
   )

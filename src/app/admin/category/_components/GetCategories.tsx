@@ -23,7 +23,7 @@ const GetCategories = () => {
       <MainHeading title="All categories"/>
       <ul>
         {categories.map((category: category) => (
-          <li className="bg-secondary mb-5 p-3 list-decimal flex justify-between  rounded-sm" key={category.id}>
+          <li className="bg-secondary mb-5 p-3 list-decimal flex justify-between rounded-sm w-[65vw] md:w-full" key={category.id}>
             {category.name}
             <div className="flex items-center gap-2">
               <Button variant='secondary' className="cursor-pointer"><UpdateCategory id={category.id} /></Button>

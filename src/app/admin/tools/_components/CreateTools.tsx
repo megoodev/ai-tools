@@ -51,32 +51,32 @@ const CreateTools = () => {
     })
   }
   return (
-    <div className=" w-[70vw]">
+    <div className=" w-[65vw]">
       <MainHeading title="Create Tool" />
       <form className="bg-secondary rounded-md p-5" onSubmit={(e) => {
         e.preventDefault()
         _createTool()
       }
       }>
-        <div className="grid w-[100%] mb-5 max-w-sm items-center gap-3">
+        <div className="grid w-full mb-5 max-w-sm items-center gap-3">
           <Label className="!w-25" htmlFor="name">tool name</Label>
-          <Input onChange={(e) => setToolData({ ...toolData, name: e.target.value })} required className="w-[65vw]" type="text" id="name" placeholder="name" />
+          <Input onChange={(e) => setToolData({ ...toolData, name: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="text" id="name" placeholder="name" />
         </div>
-        <div className="grid w-[100%] mb-5 max-w-sm items-center gap-3">
+        <div className="grid w-full mb-5 max-w-sm items-center gap-3">
           <Label htmlFor="discription">discription</Label>
-          <Input onChange={(e) => setToolData({ ...toolData, description: e.target.value })} required className="w-[65vw]" type="text" id="discription" placeholder="discription" />
+          <Input onChange={(e) => setToolData({ ...toolData, description: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="text" id="discription" placeholder="discription" />
         </div>
         <div className="grid w-full mb-5 max-w-sm items-center gap-3">
           <Label htmlFor="link">Link</Label>
-          <Input onChange={(e) => setToolData({ ...toolData, link: e.target.value })} required className="w-[65vw]" type="url" id="link" placeholder="link" />
+          <Input onChange={(e) => setToolData({ ...toolData, link: e.target.value })} required className="w-[55vw] md:w-[62vw]" type="url" id="link" placeholder="link" />
         </div>
         <div className="grid w-full mb-5 max-w-sm items-center gap-3">
-          <Label className={`${buttonVariants(Button)} cursor-pointer w-[65vw]`} htmlFor="file">selet tool image</Label>
+          <Label className={`${buttonVariants(Button)} cursor-pointer w-[55vw] md:w-[62vw]`} htmlFor="file">selet tool image</Label>
           <Input required className="hidden" type="file" id="file" onChange={(e) => setImage(e?.target?.files[0])} />
         </div>
         <div className="grid w-full mb-5 max-w-sm items-center gap-3">
           <Select onValueChange={(e) => setToolData({ ...toolData, categoryId: e })}>
-            <SelectTrigger className="w-[65vw]">
+            <SelectTrigger className="w-[55vw] md:w-[62vw]">
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
@@ -86,7 +86,7 @@ const CreateTools = () => {
             </SelectContent>
           </Select>
         </div>
-        <Button type="submit" className="w-40 text-xl font-semibold">create</Button>
+        <Button type="submit" className="w-[55vw] md:w-40 text-xl font-semibold">create</Button>
       </form>
     </div >
   )

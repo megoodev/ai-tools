@@ -33,7 +33,7 @@ const LoginForm = () => {
           return console.error(res.data.error)
         }
         localStorage.setItem('user', JSON.stringify(res.data.user))
-        dispatch(addUser(res.data.user))
+        dispatch(addUser(JSON.parse(localStorage.getItem('user'))))
         router.push('/')
       }).catch((error) => {
         console.error(error.data.error)

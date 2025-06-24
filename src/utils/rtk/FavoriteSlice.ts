@@ -13,7 +13,7 @@ type initialStateType = {
   error: null
 }
 const userSlice = createSlice({
-  name: 'user',
+  name: 'favorites',
   initialState,
   reducers: {
     setFavorite: (state, action) => {

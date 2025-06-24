@@ -22,11 +22,7 @@ const UserDialog = () => {
   const [changeImage, setChangeImage] = useState(false)
   const user = useSelector(state => state?.user?.user[0])
   const router = useRouter()
-  const logOut = () => {
-    router.replace('login')
-    localStorage.clear()
-    dispatch(deleteUser())
-  }
+
   const dispatch = useDispatch()
 
   const axiosChangeImage = (e: ChangeEvent) => {
@@ -39,7 +35,11 @@ const UserDialog = () => {
       router.refresh()
       setChangeImage(false)
     })
-
+  }
+  const logOut = () => {
+    router.replace('login')
+    localStorage.clear()
+    dispatch(deleteUser())
   }
   return (
     <Dialog>
@@ -56,9 +56,9 @@ const UserDialog = () => {
 
               <div className="mb-5 flex justify-center">
                 <div className="relative  w-60 h-60">
-                  
+
                   <Image src={user?.image?.url} fill className="object-cover rounded-sm cursor-pointer mx-auto mb-10 " alt="userImage" />
-                  
+
                 </div>
               </div>
               <div className="flex justify-evenly">

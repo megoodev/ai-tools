@@ -11,7 +11,7 @@ import {
 import Link from 'next/link'
 import Image from 'next/image'
 import DialogDemo from '../app/tools/_components/DialogDemo'
-import { BanIcon, Heart, HeartMinus, HeartPlus, PenIcon } from 'lucide-react'
+import {  HeartMinus, HeartPlus } from 'lucide-react'
 import { Button } from './ui/button'
 import { useSelector } from 'react-redux';
 import { addFavorites, deleteFavorites } from '@/lib/apiCashe/favorite'
@@ -44,7 +44,7 @@ const ToolItem = ({ tool }: { tool: Tool }) => {
 
   }
   useEffect(()=> {
-    favorites.map((favorite:Tool)=> {
+    favorites.forEach((favorite:Tool)=> {
       favorite.id === tool.id && setIsVaforite(true)
     })
   },[isFavorite])
